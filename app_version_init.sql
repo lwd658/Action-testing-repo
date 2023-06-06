@@ -18,7 +18,7 @@ wwv_flow_api.create_flow_computation(
 ,p_computation_point=>'ON_NEW_INSTANCE'
 ,p_computation_type=>'STATIC_ASSIGNMENT'
 ,p_computation_processed=>'REPLACE_EXISTING'
-,p_computation=>'3.2.0'
+,p_computation=>'3.2.1'
 );
 wwv_flow_api.component_end;
 end;
