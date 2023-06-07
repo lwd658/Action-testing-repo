@@ -1,2 +1,2 @@
 # Action-testing-repo
-Test and learn more about actions and GitHub
+Test and learn more about actions and GitHub (v 1.0)
