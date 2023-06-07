@@ -2,5 +2,10 @@ reviewers:
   # The default reviewers
   defaults:
     - repository-owners # group
-    - jmm746 # username
+    - lwd658 # username
     - team:default-reviewers # GitHub team
+ # Reviewer groups each of which has a list of GitHub usernames
+  groups:
+    repository-owners:
+      - lwd658 # username
+      - jmm746 # username
