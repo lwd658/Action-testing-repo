@@ -1,0 +1,21 @@
+
+
+on:
+  pull_request
+
+
+jobs:
+  # ...
+  send-telegram:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: jira-telegram@v0.0.3
+        with:
+          jira_host: https://jira.mycompany.com
+          github_token: ${{secrets.GH_TOKEN}}
+          project_keys: 'JIRA,PROJ,OPROJ'
+          ignore_project_keys: 'BACK,WACK'
+          first_ticket_only: true
+          use_pr_comment_blocks: true
+  # ...
