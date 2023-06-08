@@ -16,6 +16,6 @@ jobs:
         uses: onrunning/jira-pr-action@v1
         with:
           jira-account: sherwin-williams
-          ticket-regex: ^MMTABCS-\d+
+          ticket-regex: ^MMT\w\w\w-\d+
           clean-title-regex: ^\\s*A1\\s+c\\s+\\d+\\s*
-          preview-link: https://preview-${{ github.event.pull_request.number }}.example.com"
+          #preview-link: https://preview-${{ github.event.pull_request.number }}.example.com"
