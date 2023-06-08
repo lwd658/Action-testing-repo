@@ -1,0 +1,15 @@
+name: cmtpr example
+on: pull_request
+jobs:
+  example:
+    name: example
+    permissions: 
+      pull-requests: read/write
+    runs-on: ubuntu-latest
+    steps:
+      - name: comment PR
+        uses: khezen/cmtpr@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          msg: "Please ensure your branch name starts with a JIRA ticket key (Ex: MMTAM-122) or description has a valid JIRA ticket link!!"
