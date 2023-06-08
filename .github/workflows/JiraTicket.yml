@@ -1,0 +1,19 @@
+name: Update pull request
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  title-and-description:
+    if: github.actor != 'dependabot[bot]' # to avoid running it on Dependabot PRs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Add Jira ticket to PR title / add links to PR description
+        uses: onrunning/jira-pr-action@v1
+        with:
+          jira-account: sherwin-williams
+          ticket-regex: ^MMTABCS-\d+
+          clean-title-regex: ^\\s*A1\\s+c\\s+\\d+\\s*
+          preview-link: https://preview-${{ github.event.pull_request.number }}.example.com"
