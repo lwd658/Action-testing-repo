@@ -1,21 +1,30 @@
-name: Update pull request
-
+name: PR update
 on:
   pull_request:
-    types: [opened, reopened, synchronize]
+    types: [opened]
 
 jobs:
-  title-and-description:
+  update_pr:
+    name: PR update
     permissions:
       pull-requests: write
-    if: github.actor != 'dependabot[bot]' # to avoid running it on Dependabot PRs
     runs-on: ubuntu-latest
-
     steps:
-      - name: Add Jira ticket to PR title / add links to PR description
-        uses: onrunning/jira-pr-action@v1
+      - name: Check Branch
+        id: check-branch
+        run: |
+          if [[ ${{ github.head_ref }} =~ ^[A-Za-z]+-[0-9]+.*$ ]]; then
+              echo ::set-output name=match::true
+          fi
+      - uses: tzkhan/pr-update-action@v2
+        if: steps.check-branch.outputs.match == 'true'
         with:
-          jira-account: sherwin-williams
-          ticket-regex: ^MMT\w\w\w-\d+
-          clean-title-regex: ^\\s*A1\\s+c\\s+\\d+\\s*
-          #preview-link: https://preview-${{ github.event.pull_request.number }}.example.com"
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          base-branch-regex: '[A-Za-z\d-_.\\/]+'
+          head-branch-regex: '^([A-Za-z])+-\d+'
+          title-template: '[%headbranch%] '
+          body-template: |
+             [Link to %headbranch%](https://sherwin-williams.atlassian.net/browse/%headbranch%)
+              ---
+          body-update-action: 'prefix'
+          body-uppercase-base-match: false
