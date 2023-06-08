@@ -1,5 +1,8 @@
 ...
   - name: Run Test
+  on:
+  pull_request:
+    types: [opened]
   permissions: 
     pull-requests: write
     run: |
