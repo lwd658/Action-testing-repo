@@ -4,7 +4,7 @@ jobs:
   example:
     name: example
     permissions: 
-      pull-requests: read/write
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - name: comment PR
