@@ -1,11 +1,10 @@
-permissions: 
-  pull-requests: write
+name: PRcmmnt
 on:
   pull_request:
-    types:
-      - opened
-      - edited
-      - reopened
+    types: [opened]
+permissions: 
+  pull-requests: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
