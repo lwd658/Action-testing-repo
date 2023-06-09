@@ -1,0 +1,22 @@
+name: Jira Validation
+
+on:
+  pull_request:
+    types: 
+      - opened
+      - reopened
+      - edited
+  workflow_dispatch:
+
+jobs:
+  validateLinks:
+    runs-on: sw-ubuntu-vm
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run a multi-line script
+        run: |
+          npm install @actions/core
+          npm install @actions/github
+          node .github/validate-jira.js
