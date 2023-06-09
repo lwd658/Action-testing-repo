@@ -1,4 +1,5 @@
 name: "PR description check"
+
 on:
   pull_request:
     types:
@@ -8,7 +9,7 @@ on:
 
 jobs:
   publish:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: nouzbe/check-pull-request-description@v1.11
