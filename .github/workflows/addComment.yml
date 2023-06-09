@@ -3,7 +3,7 @@ on:
 
 jobs:
   test:
-    if: contains!(github.event.pull_request.description, 'atlassian')
+    if: contains(github.event.pull_request.description, 'atlassian')
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
