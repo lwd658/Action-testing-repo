@@ -19,4 +19,12 @@ jobs:
         run: |
           npm install @actions/core
           npm install @actions/github
-          node .github/validate-jira.js
+          node .github/validate-jira.j
+  printMess:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            **PLEASE ENSURE ALL JIRA LINKS ARE VALID!!**
+          
