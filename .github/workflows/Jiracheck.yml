@@ -1,21 +1,14 @@
-
-
+name: "PR description check"
 on:
-  pull_request
-
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
 
 jobs:
-  # ...
-  send-telegram:
-    runs-on: ubuntu-latest
+  publish:
+    runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: therynamo/jira-telegram@v0.0.3
-        with:
-          jira_host: https://jira.mycompany.com
-          github_token: ${{secrets.GH_TOKEN}}
-          project_keys: 'JIRA,PROJ,OPROJ'
-         
-          first_ticket_only: true
-          use_pr_comment_blocks: true
-  # ...
+      - uses: actions/checkout@v1
+      - uses: nouzbe/check-pull-request-description@v1.11
