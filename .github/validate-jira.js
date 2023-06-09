@@ -6,13 +6,9 @@ function run() {
 
   if(pullRequest) {
     const body = pullRequest.body;
-    if(body == null){
-      core.setFailed(
-        "Please add a pull request description with valid jira ticket links!!"
-      );
-    }
+    
 
-    if (!body.includes("MMTAM") || !body.includes("MMTABCS")) {
+    if ((body == null) || !body.includes("MMTAM") || !body.includes("MMTABCS")) {
       core.setFailed(
         "Please add a jira issue to the pull request description"
       );
