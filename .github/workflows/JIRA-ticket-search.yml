@@ -19,7 +19,7 @@ jobs:
         run: |
           npm install @actions/core
           npm install @actions/github
-          node .github/validate-jira.js
+          node .github/workflows/validate-jira.js
   printMess:
     runs-on: ubuntu-latest
     steps:
