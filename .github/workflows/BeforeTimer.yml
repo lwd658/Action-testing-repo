@@ -1,0 +1,11 @@
+name: TimeMe
+
+on:
+  pull_request:
+jobs:
+  Time:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: GuillaumeFalourd/wait-sleep-action@v1
+        with:
+          time: '2m' # for 1 minute
