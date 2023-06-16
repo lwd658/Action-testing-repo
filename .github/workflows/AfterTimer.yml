@@ -1,0 +1,16 @@
+name: Publish
+
+on:
+  workflow_run:
+    workflows: ['BeforeTimer']
+    types:
+      - completed
+jobs:
+  printMess:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            **This is a timer tester!!**
+          
