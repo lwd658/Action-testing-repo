@@ -11,6 +11,8 @@ on:
 jobs:
   validateLinks:
     runs-on: ubuntu-latest
+    outputs:
+      deploy-status: ${{ steps.check.outputs.triggered }}
 
     steps:
       - uses: actions/checkout@v3
@@ -22,9 +24,11 @@ jobs:
           node .github/workflows/validate-jira.js
   printMess:
     runs-on: ubuntu-latest
+    needs: [validateLinks]
+    if: needs.validateLinks.outputs.deploy-status == 'false'
     steps:
       - uses: mshick/add-pr-comment@v2
         with:
           message: |
             **PLEASE ENSURE ALL JIRA LINKS ARE VALID!!**
-          
+      
