@@ -24,11 +24,17 @@ jobs:
           node .github/workflows/validate-jira.js
   printMess:
     runs-on: ubuntu-latest
+    if: ${{ always() && !contains(join(needs.*.result, ','), 'success') }}
     needs: [validateLinks]
-    if: needs.validateLinks.outputs.deploy-status == 'false'
+    
     steps:
       - uses: mshick/add-pr-comment@v2
+      - name: comment
+        env:
+          NEEDS: ${{ toJSON(needs) }}  
         with:
           message: |
             **PLEASE ENSURE ALL JIRA LINKS ARE VALID!!**
-      
+ 
+  
+  
