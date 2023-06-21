@@ -5,15 +5,10 @@ on:
     types: 
       - opened
       - reopened
-      - edited
-  workflow_dispatch:
 
 jobs:
   validateLinks:
     runs-on: ubuntu-latest
-    outputs:
-      deploy-status: ${{ steps.check.outputs.triggered }}
-
     steps:
       - uses: actions/checkout@v3
 
