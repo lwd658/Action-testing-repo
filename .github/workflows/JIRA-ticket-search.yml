@@ -26,7 +26,7 @@ jobs:
       - uses: mshick/add-pr-comment@v2
         with:
           message: |
-            **PLEASE ENSURE ALL JIRA LINKS ARE VALID!!**
+            **!! - PLEASE INSERT A VALID JIRA LINK - !!**
  
   
   
