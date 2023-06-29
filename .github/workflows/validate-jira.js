@@ -12,7 +12,7 @@ function run() {
       );
     }
 
-    else if (!body.includes("atlassian")) {
+    else if (!body.includes("atlassian") && !body.includes("MMTAM") && !body.includes("MMTABCS")) {
       core.setFailed(
         "Please add a jira issue to the pull request description"
       );
