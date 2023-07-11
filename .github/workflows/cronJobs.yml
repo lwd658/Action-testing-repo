@@ -13,6 +13,6 @@ jobs:
   test_again:
     runs-on: ubuntu-latest
     steps:
-      - name: first
+      - name: second
         if: github.event.schedule == '55 17 * * *'
         run: echo "second"
