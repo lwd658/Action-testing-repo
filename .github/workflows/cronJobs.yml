@@ -1,15 +1,15 @@
 on:
   schedule:
-    - cron: '50 16 * * *'
-    - cron: '55 16 * * *'
+    - cron: '05 21 * * *'
+    - cron: '07 21 * * *'
 
 jobs:
   test_schedule:
     runs-on: ubuntu-latest
     steps:
       - name: first
-        if: github.event.schedule = '50 16 * * *'
+        if: github.event.schedule = '05 21 * * *'
         run: echo "First"
       - name: second
-        if: github.event.schedule = '55 16 * * *'
+        if: github.event.schedule = '07 21 * * *'
         run: echo "Second"
