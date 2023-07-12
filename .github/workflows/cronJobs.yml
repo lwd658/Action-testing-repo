@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: '52 17 * * *'
+    - cron: '00 13 * * *'
     - cron: '55 17 * * *'
 
 jobs:
@@ -8,11 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: first
-        if: github.event.schedule == '52 17 * * *'
-        run: echo "First"
-  test_again:
-    runs-on: ubuntu-latest
-    steps:
+        if: github.event.schedule == '00 13 * * *'
+        run: curl -u jmm746:116db7f2a1add8aa07ab1a2e25ca01c840 http://ci.jenkins.sherwin.com/job/MES/job/DEVELOPMENT/job/MESDB14/job/MES_DB14/buildWithParameters?token=dssa4r3rfew
       - name: second
         if: github.event.schedule == '55 17 * * *'
         run: echo "second"
