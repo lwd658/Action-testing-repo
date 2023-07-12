@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: first
         if: github.event.schedule == '00 13 * * *'
-        run: curl -u jmm746:116db7f2a1add8aa07ab1a2e25ca01c840 http://ci.jenkins.sherwin.com/job/MES/job/DEVELOPMENT/job/MESDB14/job/MES_DB14/buildWithParameters?token=dssa4r3rfew
+        run: curl -u ${{ secrets.DB_14_RUN }}
       - name: second
         if: github.event.schedule == '55 17 * * *'
         run: echo "second"
