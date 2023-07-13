@@ -1,0 +1,30 @@
+name: Deffer step
+
+on:
+  pull_request:
+    types: 
+      - opened
+      - reopened
+
+jobs:
+  Deffer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run a multi-line script
+        run: |
+          npm install @actions/core
+          npm install @actions/github
+          node .github/workflows/sleep.js
+  printMess:
+    runs-on: ubuntu-latest
+    needs: [Deffer]
+    if: ${{ always() && contains(needs.*.result, 'success') }}
+    
+    steps:
+      - uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            **!! - Wait done - !!**
+ 
