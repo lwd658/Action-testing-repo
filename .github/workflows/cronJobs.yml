@@ -1,15 +1,21 @@
 on:
-  schedule:
-    - cron: '00 13 * * *'
-    - cron: '55 17 * * *'
+  pull_request
 
 jobs:
   test_schedule:
     runs-on: ubuntu-latest
     steps:
-      - name: first
-        if: github.event.schedule == '00 13 * * *'
-        run: curl -u ${{ secrets.DB_14_RUN }}
-      - name: second
-        if: github.event.schedule == '55 17 * * *'
-        run: echo "second"
+      - uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            **!! - Wait Start - !!**}
+  printMess1:
+    runs-on: ubuntu-latest
+    needs: [test_schedule]
+   
+    if: ${{ always() && contains(needs.*.result, 'success') && (github.event.schedule == '*/3 * * * *') }}
+    steps:
+      - uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            **!! - Wait - !!**
