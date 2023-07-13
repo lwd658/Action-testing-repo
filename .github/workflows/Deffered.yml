@@ -7,8 +7,19 @@ on:
       - reopened
 
 jobs:
+
+  printMess1:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            **!! - Wait Started - !!**
   Deffer:
     runs-on: ubuntu-latest
+    needs: [printMess1]
+    if: ${{ always() && contains(needs.*.result, 'success') }}
     steps:
       - uses: actions/checkout@v3
 
